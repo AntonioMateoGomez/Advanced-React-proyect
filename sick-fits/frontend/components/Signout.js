@@ -19,5 +19,4 @@ const Signout = (props) => (
     {(signout) => <button onClick={signout}>Sign Out</button>}
   </Mutation>
 );
-
 export default Signout;
