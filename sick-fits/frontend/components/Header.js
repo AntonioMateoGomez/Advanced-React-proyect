@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Router from "next/router";
 import NProgress from "nprogress";
 import Nav from "./Nav";
-import Cart from "./Cart";
+import Cart from "../components/Cart";
 
 Router.onRouteChangeStart = () => {
   NProgress.start();
