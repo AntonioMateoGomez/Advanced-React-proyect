@@ -29,11 +29,11 @@ const CREATE_ITEM_MUTATION = gql`
 
 class CreateItem extends Component {
   state = {
-    title: "Cool shoes",
-    description: "Testing",
-    image: "dog.jpg",
-    largeImage: "largedog.jpg",
-    price: 10,
+    title: "",
+    description: "",
+    image: "",
+    largeImage: "",
+    price: 0,
   };
   handleChange = (e) => {
     const { name, type, value } = e.target;
@@ -42,7 +42,6 @@ class CreateItem extends Component {
   };
 
   uploadFile = async (e) => {
-    console.log("uploading file...");
     const files = e.target.files;
     const data = new FormData();
     data.append("file", files[0]);
@@ -67,12 +66,12 @@ class CreateItem extends Component {
       <Mutation mutation={CREATE_ITEM_MUTATION} variables={this.state}>
         {(createItem, { loading, error }) => (
           <Form
+            data-test="form"
             onSubmit={async (e) => {
               // Stop the form from submitting
               e.preventDefault();
               // call the mutation
               const res = await createItem();
-              console.log(res);
               // change them to the single item page
               Router.push({
                 pathname: "/item",
